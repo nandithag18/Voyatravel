@@ -54,8 +54,8 @@
       "city": "Thiruvananthapuram",
       "aliases": ["thiruvananthapuram", "trivandrum"],
       "hubs": [
-        {"code": "TVC", "type": "airport", "name": "Trivandrum International Airport"},
-        {"code": "TVP", "type": "rail", "name": "Thiruvananthapuram Central Railway Station"}
+        {"code": "TRV", "type": "airport", "name": "Trivandrum International Airport"},
+        {"code": "TVC", "type": "rail", "name": "Thiruvananthapuram Central Railway Station"}
       ]
     }
   ]
