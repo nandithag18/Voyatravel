@@ -7,7 +7,7 @@ from google import genai
 from dotenv import load_dotenv
 from pydantic import ValidationError
 
-from schemas.models import PassengerInfo, LocationEntity, ResolutionStatus, TripIntent
+from schemas import PassengerInfo, LocationEntity, ResolutionStatus, TripIntent
 
 load_dotenv()
 _CLIENT = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
@@ -18,11 +18,11 @@ Return ONLY valid JSON (no markdown fences, no prose) with exactly this shape:
 {{
   "origin_text": "<place name as spoken>",
   "destination_text": "<place name as spoken>",
-  "mode": "train" | "bus" | "flight" | "any",
+  "mode": "TRAIN" | "BUS" | "FLIGHT" | "ANY",
   "travel_date": "YYYY-MM-DD",
   "return_date": "YYYY-MM-DD" or null,
   "budget_max_inr": <number> or null,
-  "passengers": {{"adults": <int>, "children": <int>, "seniors": <int>}}
+  "passengers": {{"adults": <int>, "children": <int>, "infants": <int>}}
 }}
 
 Today's date is {today}. Resolve relative dates ("tomorrow", "next Friday") to
@@ -37,9 +37,9 @@ Transcript: "{transcript}"
 def _call_llm(transcript: str) -> dict:
     prompt = _SYSTEM_PROMPT.format(today=date.today().isoformat(), transcript=transcript)
     response = _CLIENT.models.generate_content(
-    model="gemini-3.6-flash",
-    contents=prompt,
-)
+        model="gemini-3.6-flash",
+        contents=prompt,
+    )
     text = response.text.strip()
     if text.startswith("```"):
         text = text.strip("`")
@@ -59,7 +59,7 @@ def parse_intent(transcript: str, session_id: uuid.UUID | None = None) -> TripIn
                 session_id=session_id,
                 origin=LocationEntity(raw_text=raw["origin_text"], status=ResolutionStatus.UNRESOLVED),
                 destination=LocationEntity(raw_text=raw["destination_text"], status=ResolutionStatus.UNRESOLVED),
-                mode=raw.get("mode", "any"),
+                mode=raw.get("mode", "ANY"),
                 travel_date=raw["travel_date"],
                 return_date=raw.get("return_date"),
                 budget_max_inr=raw.get("budget_max_inr"),
