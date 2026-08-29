@@ -1,0 +1,62 @@
+{
+  "_comment": "Each entry is one city. 'aliases' are the spellings/names an LLM might produce. 'hubs' lists every transit code for that city — one hub = RESOLVED, 2+ hubs = AMBIGUOUS by construction.",
+  "entries": [
+    {
+      "city": "Bengaluru",
+      "aliases": ["bangalore", "bengaluru", "blore", "b'lore", "bglr"],
+      "hubs": [
+        {"code": "SBC", "type": "rail", "name": "KSR Bengaluru City Railway Station"},
+        {"code": "BLR", "type": "airport", "name": "Kempegowda International Airport"},
+        {"code": "BLR-BUS-MAJESTIC", "type": "bus", "name": "Kempegowda Bus Station (Majestic)"}
+      ]
+    },
+    {
+      "city": "Kochi",
+      "aliases": ["kochi", "cochin"],
+      "hubs": [
+        {"code": "COK", "type": "airport", "name": "Cochin International Airport"},
+        {"code": "ERS", "type": "rail", "name": "Ernakulam Junction Railway Station"},
+        {"code": "ERN", "type": "rail", "name": "Ernakulam Town Railway Station"}
+      ]
+    },
+    {
+      "city": "Alappuzha",
+      "aliases": ["alappuzha", "alleppey"],
+      "hubs": [
+        {"code": "ALLP", "type": "rail", "name": "Alappuzha Railway Station"}
+      ]
+    },
+    {
+      "city": "Chennai",
+      "aliases": ["chennai", "madras"],
+      "hubs": [
+        {"code": "MAS", "type": "rail", "name": "Chennai Central Railway Station"},
+        {"code": "MAA", "type": "airport", "name": "Chennai International Airport"}
+      ]
+    },
+    {
+      "city": "Mumbai",
+      "aliases": ["mumbai", "bombay"],
+      "hubs": [
+        {"code": "CSMT", "type": "rail", "name": "Chhatrapati Shivaji Maharaj Terminus"},
+        {"code": "BOM", "type": "airport", "name": "Chhatrapati Shivaji Maharaj International Airport"}
+      ]
+    },
+    {
+      "city": "Delhi",
+      "aliases": ["delhi", "new delhi"],
+      "hubs": [
+        {"code": "NDLS", "type": "rail", "name": "New Delhi Railway Station"},
+        {"code": "DEL", "type": "airport", "name": "Indira Gandhi International Airport"}
+      ]
+    },
+    {
+      "city": "Thiruvananthapuram",
+      "aliases": ["thiruvananthapuram", "trivandrum"],
+      "hubs": [
+        {"code": "TRV", "type": "airport", "name": "Trivandrum International Airport"},
+        {"code": "TVC", "type": "rail", "name": "Thiruvananthapuram Central Railway Station"}
+      ]
+    }
+  ]
+}
